@@ -10,8 +10,11 @@ class TetrisTest {
 
     @BeforeAll
     public static void beforeTest() {
-        tetris = new Tetris();
-        //tetris.setVisible(true);
+		try {
+			tetris = new Tetris();
+			//tetris.setVisible(true);
+		} catch(Exception e) {
+		}
     }
 
     @Test
