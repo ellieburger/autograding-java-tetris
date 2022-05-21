@@ -14,12 +14,19 @@ public class Tetris extends JFrame {
         initUI();
     }
 
+    public Tetris(Board board) {
+        board.setStatusbar(this.getStatusBar());
+        this.board = board;
+        initUI();
+    }
+
     private void initUI() {
         statusbar = new JLabel(" 0");
         statusbar.setFont(new Font("Serif", Font.PLAIN, 32));
         add(statusbar, BorderLayout.NORTH);
 
-        board = new Board(this);
+        if (board == null)
+            board = new Board(this);
         add(board);
         board.start();
 
@@ -38,29 +45,11 @@ public class Tetris extends JFrame {
     }
 
     public boolean isGameOver() {
-        return false;
-    }
-
-    public void restart() {
-        board.start();
-        statusbar.setText("");
+        return board.getGameOver();
     }
 
     public int getLinesRemoved() {
         return board.getLinesRemoved();
-    }
-
-    public boolean move(int x_val) {
-        return board.tryMove(board.getCurPiece(), board.curX  + x_val, board.curY);
-    }
-
-    public boolean rotate(boolean clockwise) {
-        Shape piece;
-        if (clockwise)
-            piece = board.getCurPiece().rotateLeft();
-        else
-            piece = board.getCurPiece().rotateRight();
-        return board.tryMove(piece, board.curX, board.curY);
     }
 
     public static void main(String[] args) {

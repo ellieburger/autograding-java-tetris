@@ -53,6 +53,10 @@ public class Shape {
         setShape(values[x]);
     }
 
+    public void setPieceShape(Tetrominoe shape) {
+        setShape(shape);
+    }
+
     public int minX() {
         int m = coords[0][0];
         for (int i=0; i < 4; i++) {
