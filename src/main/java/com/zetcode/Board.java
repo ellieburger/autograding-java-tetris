@@ -170,7 +170,7 @@ public class Board extends JPanel {
     }
 
     public void newPiece(Tetrominoe shape) {
-        curPiece.setShape(Tetrominoe.TShape);
+        curPiece.setShape(Shape);
         initPiece();
     }
     private void initPiece() {
@@ -301,7 +301,7 @@ public class Board extends JPanel {
         return numLinesRemoved;
     }
 
-    public boolean getGameOver() { return false; }
+    public boolean getGameOver() { return true; }
 
     private class TAdapter extends KeyAdapter {
 
